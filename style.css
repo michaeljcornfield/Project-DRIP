@@ -1810,7 +1810,7 @@ footer {
 
   @page {
     size: Letter portrait;
-    margin: 0.55in;
+    margin: 0.5in;
   }
 
   * {
@@ -1818,24 +1818,81 @@ footer {
     print-color-adjust: exact !important;
   }
 
-  .site-header {
-    display: none !important;
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
   }
 
   body {
     font-size: 9pt;
+    line-height: 1.35;
+  }
+
+  .site-header {
+    display: none !important;
   }
 
   .container {
     width: 100%;
+    max-width: none;
+    margin: 0;
   }
 
   .section {
-    padding: 34px 0;
+    padding: 28px 0;
   }
+
+
+  /* -----------------------------------------
+     Typography
+     ----------------------------------------- */
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    font-size: 42pt;
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: 23pt;
+    line-height: 1.05;
+  }
+
+  h3 {
+    font-size: 11pt;
+  }
+
+  .section-intro {
+    max-width: none;
+    margin-bottom: 24px;
+    font-size: 10pt;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+
+  /* -----------------------------------------
+     Hero = cover page
+     ----------------------------------------- */
 
   .hero {
     min-height: 9in;
+    height: auto;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
 
     break-after: page;
     page-break-after: always;
@@ -1845,13 +1902,23 @@ footer {
     padding: 0;
   }
 
-  h1 {
-    font-size: 46pt;
+  .hero h1 {
+    max-width: 7in;
   }
 
-  h2 {
-    font-size: 26pt;
+  .hero-text {
+    max-width: 6.7in;
+    font-size: 12pt;
   }
+
+  .hero-map {
+    opacity: 0.75;
+  }
+
+
+  /* -----------------------------------------
+     Do NOT force every section onto a new page
+     ----------------------------------------- */
 
   .client-need,
   .problem,
@@ -1860,49 +1927,376 @@ footer {
   .workflow,
   .cases,
   .architecture,
-  .principles,
-  .thesis {
-    break-before: page;
-    page-break-before: always;
+  .principles {
+    break-before: auto;
+    page-break-before: auto;
+
+    break-after: auto;
+    page-break-after: auto;
   }
 
-  .need-network {
-    grid-template-columns: 1fr 1fr 1fr;
 
+  /* -----------------------------------------
+     Keep key components together
+     ----------------------------------------- */
+
+  .need-network,
+  .north-star,
+  .domain-line,
+  .rail-core-map,
+  .extension-map,
+  .evolution-line,
+  .workflow-route,
+  .architecture-map,
+  .principle-list,
+  .case-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+
+  /* -----------------------------------------
+     Client Need
+     ----------------------------------------- */
+
+  .need-network {
+    grid-template-columns: 1fr 1.05fr 1fr;
     gap: 10px;
   }
 
   .network-column,
   .network-spine {
     min-height: auto;
+    padding: 15px;
+  }
 
-    padding: 16px;
+  .network-heading,
+  .spine-label {
+    margin-bottom: 16px;
+    font-size: 6pt;
   }
 
   .station-item {
-    padding-bottom: 12px;
+    padding-bottom: 10px;
+    grid-template-columns: 22px 1fr;
   }
 
   .station-item h3 {
+    margin-bottom: 3px;
     font-size: 8pt;
   }
 
   .station-item p {
-    font-size: 6.8pt;
+    font-size: 6.5pt;
+    line-height: 1.35;
   }
 
-  .rail-core-map,
-  .architecture-map,
-  .evolution-line,
-  .workflow-route,
-  .case-row {
-    break-inside: avoid;
-    page-break-inside: avoid;
+  .station-dot {
+    width: 14px;
+    height: 14px;
+    border-width: 4px;
   }
 
-  .case-row {
-    min-height: 130px;
+  .station-item::before {
+    left: 5px;
+    top: 12px;
+    width: 3px;
   }
+
+  .spine-line {
+    margin: 10px 0 16px;
+  }
+
+  .spine-stop {
+    min-height: 48px;
+  }
+
+  .spine-stop strong {
+    font-size: 7.5pt;
+  }
+
+  .network-spine > p {
+    font-size: 7pt;
+  }
+
+  .north-star {
+    margin-top: 14px;
+    padding: 12px 16px;
+  }
+
+  .north-star strong {
+    font-size: 9pt;
+  }
+
+
+  /* -----------------------------------------
+     Integration problem
+     ----------------------------------------- */
+
+  .domain-line {
+    margin: 28px 0 22px;
+  }
+
+  .domain-stop p {
+    font-size: 8pt;
+  }
+
+  .problem-close {
+    font-size: 9pt;
+  }
+
+
+  /* -----------------------------------------
+     Operational Core
+     ----------------------------------------- */
+
+  .rail-core-map {
+    min-height: 395px;
+    margin: 25px auto 20px;
+  }
+
+  .core-station {
+    width: 190px;
+    padding: 12px 14px 12px 38px;
+  }
+
+  .core-junction {
+    width: 300px;
+    padding: 22px;
+  }
+
+  .core-junction strong {
+    font-size: 14pt;
+  }
+
+  .route-validation::before {
+    height: 75px;
+  }
+
+  .extension-map {
+    padding-top: 12px;
+  }
+
+  .extension-map span {
+    padding: 4px 8px;
+    font-size: 6.5pt;
+  }
+
+
+  /* -----------------------------------------
+     CRIS -> RailPaaS -> DRIP
+     ----------------------------------------- */
+
+  .evolution-line {
+    gap: 18px;
+    margin: 28px 0 20px;
+  }
+
+  .evolution-stop {
+    padding-top: 42px;
+  }
+
+  .evolution-stop-primary {
+    padding: 42px 16px 16px;
+  }
+
+  .evolution-stop h3 {
+    font-size: 10pt;
+  }
+
+  .evolution-stop > p:not(.stage-label) {
+    font-size: 7pt;
+  }
+
+  .evolution-close {
+    font-size: 8.5pt;
+  }
+
+
+  /* -----------------------------------------
+     Approach
+     ----------------------------------------- */
+
+  .workflow {
+    padding: 35px 0;
+  }
+
+  .workflow-route {
+    gap: 12px;
+    padding-top: 32px;
+  }
+
+  .workflow-stop {
+    padding-top: 38px;
+  }
+
+  .workflow-stop h3 {
+    font-size: 11pt;
+  }
+
+  .workflow-stop small {
+    font-size: 7pt;
+  }
+
+
+  /* -----------------------------------------
+     Cases
+     ----------------------------------------- */
+
+  .case-row {
+    min-height: 105px;
+    grid-template-columns: 45px 40px 1fr;
+  }
+
+  .case-route-number {
+    padding-top: 22px;
+    font-size: 6.5pt;
+  }
+
+  .case-route-mark::before {
+    left: 15px;
+  }
+
+  .case-route-mark > span {
+    left: 3px;
+    top: 20px;
+
+    width: 30px;
+    height: 30px;
+
+    border-width: 7px;
+  }
+
+  .case-content {
+    padding: 18px 0 20px 15px;
+  }
+
+  .case-content h3 {
+    margin-bottom: 5px;
+    font-size: 10.5pt;
+  }
+
+  .case-content p {
+    margin-bottom: 8px;
+    font-size: 7.5pt;
+  }
+
+  .relationship-label {
+    padding: 4px 7px;
+    font-size: 6pt;
+  }
+
+
+  /* -----------------------------------------
+     Architecture
+     ----------------------------------------- */
+
+  .architecture-map {
+    margin-top: 25px;
+  }
+
+  .source-line {
+    grid-template-columns: repeat(5, 1fr);
+    padding: 24px 15px 18px;
+  }
+
+  .source-stop p {
+    font-size: 7pt;
+  }
+
+  .standards-band {
+    padding: 10px 14px;
+  }
+
+  .drip-band {
+    padding: 18px;
+  }
+
+  .drip-band strong {
+    font-size: 11pt;
+  }
+
+  .outcome-line span {
+    padding: 10px;
+    font-size: 7pt;
+  }
+
+
+  /* -----------------------------------------
+     Principles
+     ----------------------------------------- */
+
+  .principle-list > div {
+    min-height: 52px;
+    grid-template-columns: 40px 60px 1fr;
+  }
+
+  .principle-list h3 {
+    font-size: 11pt;
+  }
+
+  .principle-line {
+    width: 44px;
+    height: 6px;
+  }
+
+
+  /* -----------------------------------------
+     Closing page
+     ----------------------------------------- */
+
+  .thesis {
+    min-height: 8.8in;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .thesis h2 {
+    font-size: 28pt;
+  }
+
+  .thesis-content > p:not(.section-code) {
+    font-size: 11pt;
+  }
+
+  .closing-route {
+    grid-template-columns: 28px auto 1fr;
+    gap: 12px;
+
+    margin-top: 40px;
+  }
+
+  .closing-route strong {
+    font-size: 9pt;
+  }
+
+  .closing-route strong:last-child {
+    grid-column: 2 / 4;
+    margin-top: 10px;
+  }
+
+  .closing-line {
+    width: 100%;
+  }
+
+
+  /* -----------------------------------------
+     Footer
+     ----------------------------------------- */
+
+  footer {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     Links
+     ----------------------------------------- */
 
   a {
     color: inherit !important;
