@@ -1209,3 +1209,485 @@ footer {
   }
 
 }
+
+/* =========================================================
+   PRINT / PDF REVIEW MODE
+   Makes Project DRIP easy to print and mark up
+   ========================================================= */
+
+@media print {
+
+  /* ---------- PAGE SETUP ---------- */
+
+  @page {
+    size: Letter portrait;
+    margin: 0.55in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    background: white;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+
+  /* ---------- REMOVE WEBSITE NAVIGATION ---------- */
+
+  .site-header {
+    display: none !important;
+  }
+
+  footer {
+    margin-top: 0;
+    padding: 20px 0;
+  }
+
+
+  /* ---------- GENERAL PRINT SPACING ---------- */
+
+  .section {
+    padding: 38px 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h1 {
+    font-size: 38pt;
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: 25pt;
+    line-height: 1.05;
+  }
+
+  h3 {
+    font-size: 13pt;
+  }
+
+  .eyebrow {
+    font-size: 7pt;
+  }
+
+  .section-intro {
+    margin-bottom: 25px;
+    font-size: 11pt;
+  }
+
+
+  /* =========================================================
+     HERO — REVIEW COVER PAGE
+     ========================================================= */
+
+  .hero {
+    min-height: 0;
+    height: 9.1in;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .hero h1 {
+    max-width: 7in;
+    font-size: 48pt;
+  }
+
+  .hero-text {
+    max-width: 6.5in;
+    font-size: 13pt;
+  }
+
+  .hero-principle {
+    font-size: 10pt;
+  }
+
+
+  /* =========================================================
+     CLIENT NEED
+     Keep the framework together where possible
+     ========================================================= */
+
+  .client-need {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .need-grid {
+    grid-template-columns: 1fr 1.1fr 1fr;
+    gap: 12px;
+
+    margin-top: 25px;
+  }
+
+  .need-column {
+    padding: 18px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .need-label {
+    margin-bottom: 18px;
+    font-size: 6.5pt;
+  }
+
+  .need-item {
+    padding: 11px 0;
+    grid-template-columns: 25px 1fr;
+  }
+
+  .need-item h3 {
+    font-size: 9pt;
+  }
+
+  .need-item p {
+    font-size: 7.5pt;
+  }
+
+  .need-primary-title {
+    font-size: 15pt;
+  }
+
+  .need-primary-text {
+    font-size: 8.5pt;
+  }
+
+  .need-flow {
+    margin-top: 24px;
+  }
+
+  .need-flow strong {
+    font-size: 6.5pt;
+  }
+
+  .need-primary-close {
+    margin-top: 25px;
+    font-size: 7.5pt;
+  }
+
+  .future-item {
+    padding: 8px 0;
+  }
+
+  .future-item strong {
+    font-size: 8pt;
+  }
+
+  .future-item p {
+    font-size: 6.8pt;
+  }
+
+  .north-star {
+    margin-top: 16px;
+    padding: 16px 20px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .north-star strong {
+    font-size: 10pt;
+  }
+
+
+  /* =========================================================
+     INTEGRATION PROBLEM
+     ========================================================= */
+
+  .problem {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .domain-grid {
+    margin: 28px 0;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .domain-card {
+    min-height: 100px;
+    padding: 16px;
+  }
+
+  .domain-card span {
+    margin-bottom: 22px;
+  }
+
+
+  /* =========================================================
+     OPERATIONAL CORE
+     ========================================================= */
+
+  .core {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .core-model {
+    margin: 30px auto 25px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .model-box {
+    padding: 16px 20px;
+  }
+
+  .arrow-down {
+    margin: 10px 0;
+  }
+
+
+  /* =========================================================
+     CRIS → RAILPAAS → DRIP
+     ========================================================= */
+
+  .evolution {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .evolution-model {
+    margin: 30px 0 25px;
+    gap: 12px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .evolution-stage {
+    padding: 18px;
+  }
+
+  .stage-label {
+    margin-bottom: 22px;
+  }
+
+
+  /* =========================================================
+     CONNECT → VALIDATE → UNDERSTAND → DECIDE
+     ========================================================= */
+
+  .workflow {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .workflow-grid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .workflow-grid > div {
+    min-height: 190px;
+    padding: 20px;
+  }
+
+  .workflow-grid span {
+    margin-bottom: 35px;
+  }
+
+  .workflow-grid h3 {
+    font-size: 13pt;
+  }
+
+  .workflow-grid p {
+    font-size: 8pt;
+  }
+
+
+  /* =========================================================
+     USE CASES
+     ========================================================= */
+
+  .cases {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .case-grid {
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .case-card {
+    min-height: 275px;
+    padding: 20px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .case-number {
+    margin-bottom: 30px;
+  }
+
+  .case-card h3 {
+    font-size: 13pt;
+  }
+
+  .case-card > p:not(.case-number) {
+    font-size: 8.5pt;
+  }
+
+  .case-relationship {
+    margin: 15px 0;
+    padding: 9px 11px;
+
+    font-size: 7.5pt;
+  }
+
+  .case-tags span {
+    padding: 4px 7px;
+    font-size: 6pt;
+  }
+
+
+  /* =========================================================
+     ARCHITECTURE
+     ========================================================= */
+
+  .architecture {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .architecture-model {
+    margin-top: 30px;
+    padding: 25px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+
+  /* =========================================================
+     PRINCIPLES
+     ========================================================= */
+
+  .principles {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .principle-list > div {
+    min-height: 62px;
+  }
+
+  .principle-list h3 {
+    font-size: 15pt;
+  }
+
+
+  /* =========================================================
+     THESIS / CLOSING PAGE
+     ========================================================= */
+
+  .thesis {
+    min-height: 8.5in;
+
+    display: flex;
+    align-items: center;
+
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .thesis h2 {
+    font-size: 30pt;
+  }
+
+  .thesis-content > p:not(.eyebrow):not(.thesis-close) {
+    font-size: 13pt;
+  }
+
+
+  /* =========================================================
+     DETAILED USE CASE PAGES
+     ========================================================= */
+
+  .use-case-hero {
+    min-height: 8.5in;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .case-flow {
+    gap: 7px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .flow-box {
+    padding: 14px;
+  }
+
+  .flow-box span {
+    margin-bottom: 20px;
+  }
+
+  .flow-box strong {
+    font-size: 9pt;
+  }
+
+  .flow-box p {
+    font-size: 7pt;
+  }
+
+  .tool-model,
+  .before-after {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+
+  /* ---------- LINKS ---------- */
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+}
